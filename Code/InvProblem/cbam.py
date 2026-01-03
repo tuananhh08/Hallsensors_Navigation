@@ -8,7 +8,7 @@ class ChannelAttention(nn.Module):
         self.max_pool = nn.AdaptiveMaxPool2d(1)
 
         self.mlp = nn.Sequential(
-            nn.Linear(in_channels, in_channels // reduction, bias=False),
+            nn.Linear(in_channels, max(1, in_channels // reduction), bias=False),
             nn.LeakyReLU(negative_slope=0.01,inplace=True),
             nn.Linear(in_channels // reduction, in_channels, bias=False)
         )
