@@ -6,11 +6,12 @@ class ResBlock(nn.Module):
         self.block = nn.Sequential(
             nn.Conv2d(channels, channels, 3, padding=1, bias=False),
             nn.BatchNorm2d(channels),
-            nn.ReLU(inplace=True),
+            nn.LeakyReLU(negative_slope=0.01,inplace=True),
             nn.Conv2d(channels, channels, 3, padding=1, bias=False),
             nn.BatchNorm2d(channels),
         )
-        self.relu = nn.ReLU(inplace=True)
+        nn.LeakyReLU(negative_slope=0.01,inplace=True),
+
 
     def forward(self, x):
         return self.relu(x + self.block(x))

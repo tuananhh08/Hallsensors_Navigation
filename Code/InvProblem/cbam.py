@@ -9,7 +9,7 @@ class ChannelAttention(nn.Module):
 
         self.mlp = nn.Sequential(
             nn.Linear(in_channels, in_channels // reduction, bias=False),
-            nn.ReLU(),
+            nn.LeakyReLU(negative_slope=0.01,inplace=True),
             nn.Linear(in_channels // reduction, in_channels, bias=False)
         )
 
