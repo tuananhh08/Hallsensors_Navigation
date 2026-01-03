@@ -2,7 +2,7 @@ import torch
 import torch.nn as nn
 
 class ChannelAttention(nn.Module):
-    def __init__(self, in_channels, reduction=16):
+    def __init__(self, in_channels, reduction=4):
         super().__init__()
         self.avg_pool = nn.AdaptiveAvgPool2d(1)
         self.max_pool = nn.AdaptiveMaxPool2d(1)
@@ -26,7 +26,7 @@ class ChannelAttention(nn.Module):
 
 
 class SpatialAttention(nn.Module):
-    def __init__(self, kernel_size=7):
+    def __init__(self, kernel_size=2):
         super().__init__()
         padding = kernel_size // 2
 
@@ -42,7 +42,7 @@ class SpatialAttention(nn.Module):
 
 
 class CBAM(nn.Module):
-    def __init__(self, in_channels, reduction=16):
+    def __init__(self, in_channels, reduction=4):
         super().__init__()
         self.ca = ChannelAttention(in_channels, reduction)
         self.sa = SpatialAttention()

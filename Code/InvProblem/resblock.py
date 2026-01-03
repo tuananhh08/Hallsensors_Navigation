@@ -10,8 +10,8 @@ class ResBlock(nn.Module):
             nn.Conv2d(channels, channels, 3, padding=1, bias=False),
             nn.BatchNorm2d(channels),
         )
-        nn.LeakyReLU(negative_slope=0.01,inplace=True),
-
+        self.relu = nn.LeakyReLU(negative_slope=0.01,inplace=True),
 
     def forward(self, x):
         return self.relu(x + self.block(x))
+    
