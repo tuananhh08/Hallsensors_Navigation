@@ -39,3 +39,4 @@ class FCN(nn.Module):
         x = x.flatten(1)
         x = self.dropout(x)
         return self.regressor(x)
+
