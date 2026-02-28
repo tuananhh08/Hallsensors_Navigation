@@ -28,7 +28,7 @@ m = np.array([mx,my,mz])
 def B_formula (point,sensor, m_vec):
     r_vec = sensor - point
     r = np.linalg.norm(r_vec) +1e-12
-    m_dot_r = np.dot(m,r_vec)
+    m_dot_r = np.dot(m_vec,r_vec)
     
     term1 = 3*m_dot_r *r_vec / (r**5)
     term2 = m_vec / (r**3)

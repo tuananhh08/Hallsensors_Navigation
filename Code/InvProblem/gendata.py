@@ -2,8 +2,8 @@ import numpy as np
 import pandas as pd
 
 #load input files
-helical_df = pd.read_csv("Helical_points_coordinates.csv")
-sensor_df = pd.read_csv("Sensors_pos.csv")
+helical_df = pd.read_csv("Helical_points_coordinates.csv") #vi tri cac diem he Helical
+sensor_df = pd.read_csv("Sensors_pos.csv") #vi tri 8x8 sensors
 
 helical_pts = helical_df.values
 sensor_pos = sensor_df.values
@@ -69,10 +69,12 @@ for x in x_vals:
                         buffer = []
                         file_idx += 1
 
-# ghi phần còn lại
+# write csv files
 if buffer:
     df = pd.DataFrame(buffer, columns=columns)
     df.to_csv(f"ROI_data_{file_idx}.csv", index=False)
     print(f"Saved ROI_data_{file_idx}.csv")
 
 print("Data generation completed.")
+
+
