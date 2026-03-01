@@ -2,12 +2,12 @@ import numpy as np
 import pandas as pd
 
 #load input files
-helical_df = pd.read_csv("Helical_points_coordinates.csv") #vi tri cac diem he Helical
+# helical_df = pd.read_csv("Helical_points_coordinates.csv") #vi tri cac diem he Helical
 sensor_df = pd.read_csv("Sensors_pos.csv") #vi tri 8x8 sensors
 
-helical_pts = helical_df.values
+# helical_pts = helical_df.values
 sensor_pos = sensor_df.values
-helical_xyz = helical_pts[:,:3]
+# helical_xyz = helical_pts[:,:3]
 
 sensor_center = sensor_pos.mean(axis=0)
 
@@ -28,7 +28,7 @@ z_max = sensor_center[2] + roi_height
 #ROI
 num_xy = 30
 num_z = 20
-num_angle = 12
+num_angle = 18
 
 x_vals = np.linspace(x_min, x_max, num_xy)
 y_vals = np.linspace(y_min, y_max, num_xy)
@@ -36,7 +36,7 @@ z_vals = np.linspace(z_min, z_max, num_z)
 pitch_vals = np.linspace(0,180, num_angle)
 yaw_vals = np.linspace(0,180,num_angle)
 
-num_files = 10
+num_files = 20
 columns = ["x", "y", "z", "cos_pitch", "cos_yaw"]
 
 total_samples = (
